@@ -1,8 +1,6 @@
 import signal
 import time
-
-def unlock() -> None:
-    print("door unlocked!")
+import sys
 
 class TimeoutException(Exception):
     pass
@@ -26,6 +24,8 @@ def check_knock(timeout: int) -> bool:
         return False
     except KeyboardInterrupt:        
         return True 
+    except EOFError:
+        sys.exit(0)
     finally:
         signal.setitimer(signal.ITIMER_REAL, 0)
 
@@ -38,31 +38,3 @@ def parse_knock(times: list[float]) -> list[float]:
     # normalize 
     # result = [round(n / min(result), 2) for n in result]
     return result
-
-def generate_knock():
-    print("press enter and then knock your sequence. When you are done, hit enter")
-    input()
-    seq = []
-    while True: 
-        try:             
-            user_input = input()  # Wait for user input
-            if user_input == "":
-                print("Knock sequence recorded:")
-                print(parse_knock(seq))
-                print("set a new lock? YES / NO")
-                user_input = input()                    
-                break  # Exit the loop if Enter is pressed without any input
-        except KeyboardInterrupt: 
-            seq.append(time.time())
-
-
-
-def main(time):
-    generate_knock()
-    # if check_knock(time):
-    #     print("Knock detected!")
-    # else: 
-    #     print("Knock not detected!")
-
-if __name__ == "__main__":
-    main(time=2000) 
