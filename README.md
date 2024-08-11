@@ -34,7 +34,7 @@ To run the door lock CLI, simply execute the `main.py` file:
 
 ```bash
 python3 main.py
-
+```
 You will be prompted to enter your secret knocking sequence. Do this buy typing ctrl+c a number of times to imitate a knocking sequence. When you are finished, hit "Enter" to save this sequence. The gaps (in seconds) between your knocks will then be displayed to you. Now, your doorlock is activated! To unlock the door, hit this same sequence of ctrl+c commands. 
 
 
