@@ -1,7 +1,19 @@
+# NEXT STEPS
+# 1. Listen for the relative not absolute times 
+    # a) listen for all the knocks
+    # b) divide by lowest interval. 
+    # c) enforce buffer logic (on normalized intervals)
+# 2. TIMEOUT error edge case
+# 3. Generate code by averaging two sequences
+# 4. Classify things, flags, etc
+
+import math
 from util import unlock, check_knock
-BUF = 0.15 * 1000
+BUF = 100 # absolute version
+BUF_REL = 0.25 # 0.0 - 1.0 | represents a percentage
 MAX_ATTEMPTS = 3
 PUNISH_TIME = 1000 * 10
+MAX_GAP = 10 * 1000
 
 
 def main(seq):
@@ -24,7 +36,7 @@ def punish(punish_time: int) -> None:
     for i in range(int(iters)):
         if check_knock(increment): 
             print(f"stop! new knocks are disabled for {(punish_time - i * increment) / 1000} more seconds")
-        elif i % 1000 == 0: 
+        elif i % 100 == 0: 
             print(f"new knocks are disabled for {(punish_time - i * increment) / 1000} more seconds")
     print("lock re-ennabled")
 
@@ -46,6 +58,7 @@ def wait_and_check_seq(seq: list[int]) -> bool:
 
 
     return True
+
 
 
 if __name__ == "__main__":

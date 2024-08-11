@@ -17,7 +17,9 @@ def check_knock(timeout: int) -> bool:
     # poll for time ms checking for a KEY_INTERUPT.
     try:
         signal.signal(signal.SIGALRM, handler)
+            
         signal.setitimer(signal.ITIMER_REAL, timeout / 1000)
+        
         while True:
             time.sleep(0.1)
     except TimeoutException:
@@ -31,7 +33,10 @@ def check_knock(timeout: int) -> bool:
 def parse_knock(times: list[float]) -> list[float]:
     result = []
     for i in range(len(times) - 1):
-        result.append(round(times[i + 1] - times[i], 2))
+        result.append(times[i + 1] - times[i])
+    
+    # normalize 
+    result = [round(n / min(result), 2) for n in result]
     return result
 
 def generate_knock():
