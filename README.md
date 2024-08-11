@@ -6,6 +6,7 @@ A Python-based command-line interface (CLI) for managing a door lock system. Thi
 
 - **`main.py`**: The entry point for the CLI. Initializes the `DoorLock` object and starts the polling process.
 - **`doorlock.py`**: Contains the `DoorLock` class that handles the logic for setting a knock sequence, checking it, and enforcing security measures.
+-  **`util.py`**: Contains the ```check_knock()``` and ```parse_knock()``` helper functions. ```check_knock()``` is the fundemental time-keeping function for our doorlock. 
 
 ## Getting Started
 
@@ -33,5 +34,7 @@ To run the door lock CLI, simply execute the `main.py` file:
 
 ```bash
 python3 main.py
+
+
 
 
