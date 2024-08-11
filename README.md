@@ -36,9 +36,10 @@ To run the door lock CLI, simply execute the `main.py` file:
 python3 main.py
 ```
 ## Flags
-``--margin``: set the allowable error margin (in milliseconds) between knocks. \n
-``--max-attempts``: sets the maximum number of incorrect attempts allowed before new attempts are disabled. \n
-``--punish-time``: sets how long this disable period lasts (in milliseconds). \n
+``--margin``: set the allowable error margin (in milliseconds) between knocks.<br>
+``--max-attempts``: sets the maximum number of incorrect attempts allowed before new attempts are disabled.<br>
+``--punish-time``: sets how long this disable period lasts (in milliseconds).<br>
+
 
 
 
