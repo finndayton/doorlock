@@ -35,14 +35,13 @@ To run the door lock CLI, simply execute the `main.py` file:
 ```bash
 python3 main.py
 ```
-## Flags
+#### Flags
 ``--margin``: set the allowable error margin (in milliseconds) between knocks.<br>
 ``--max-attempts``: sets the maximum number of incorrect attempts allowed before new attempts are disabled.<br>
 ``--punish-time``: sets how long this disable period lasts (in milliseconds).<br>
 
 
-
-
+#### Flow
 You will be prompted to enter your secret knocking sequence. Do this buy typing ```ctrl+c``` a number of times to imitate a knocking sequence. When you are finished, hit ```Enter``` to save this sequence. The gaps (in seconds) between your knocks will then be displayed to you. Now, your doorlock is activated! To unlock the door, hit this same sequence of ```ctrl+c``` commands. 
 
 
