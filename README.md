@@ -19,17 +19,15 @@ A Python-based command-line interface (CLI) for managing a door lock system. Thi
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/yourusername/doorlock-cli.git
+    git clone https://github.com/finndayton/doorlock.git
     ```
 
 2. Navigate to the project directory:
-
     ```bash
     cd doorlock-cli
     ```
 
 ### Running the Program
-
 To run the door lock CLI, simply execute the `main.py` file:
 
 ```bash
