@@ -1,11 +1,8 @@
 # NEXT STEPS
-# 1. Listen for the relative not absolute times 
-    # a) listen for all the knocks
-    # b) divide by lowest interval. 
-    # c) enforce buffer logic (on normalized intervals)
-# 2. TIMEOUT error edge case
-# 3. Generate code by averaging two sequences
-# 4. Classify things, flags, etc
+# 1. ctrl + D
+# 2. Proper CLI. 
+# 3. TIMEOUT error edge case
+# 4. Generate code by averaging two sequences
 
 import math
 from util import *
@@ -22,25 +19,33 @@ class DoorLock:
         self.punish_time = punish_time
 
     def unlock(self) -> None:
-        print("door unlocked!")
-
+        print("""
+            *******************************
+            *                             *
+            *       Door unlocked!        *
+            *                             *
+            *******************************
+        """)
 
     # actively wait and listen for a door knock
     def poll(self) -> None:
         if not self.seq:
-            print("print you must first set a knock sequence")
+            print("you must first set a knock sequence")
+            return
 
         attempts = 0
         while True:
             if self.wait_and_check_seq():
                 self.unlock()
                 attempts = 0
+                return
             else: 
                 print("Wrong password")
                 attempts += 1
                 if attempts >= self.max_attempts: 
                     attempts = 0
                     self.punish()
+                    return
 
     # block new attempts, block the user from new attempts for PUNISH_TIME
     def punish(self) -> None:
@@ -61,15 +66,11 @@ class DoorLock:
             if check_knock(10 * 1000): break # use check_knock() to poll for the first knock
 
         for i in range(len(self.seq)):
-            print(f'checking {self.seq[i]}')
-
             # if the knock is heard before the expected delay 
             if check_knock(self.seq[i] * 1000 - self.margin): return False
 
             # if no knock in your window, return false
             if not check_knock(self.margin * 2): return False
-
-
         return True
     
     def set_knock(self) -> None:

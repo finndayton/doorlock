@@ -34,7 +34,4 @@ def parse_knock(times: list[float]) -> list[float]:
     result = []
     for i in range(len(times) - 1):
         result.append(round(times[i + 1] - times[i], 2))
-    
-    # normalize 
-    # result = [round(n / min(result), 2) for n in result]
     return result
