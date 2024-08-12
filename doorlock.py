@@ -40,7 +40,13 @@ class DoorLock:
                 attempts = 0
                 return
             else: 
-                print("Wrong password")
+                print(f"""
+                    *******************************
+                    *  Incorrect Knock Sequence!  *
+                    *  Attempts Left: {self.max_attempts - attempts}           *
+                    *******************************
+                    """)
+
                 attempts += 1
                 if attempts >= self.max_attempts: 
                     attempts = 0

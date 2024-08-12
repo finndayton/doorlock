@@ -19,11 +19,12 @@ def check_knock(timeout: int) -> bool:
         signal.setitimer(signal.ITIMER_REAL, timeout / 1000)
         
         while True:
-            time.sleep(0.1)
+            try:
+                time.sleep(0.1)
+            except KeyboardInterrupt:        
+                return True 
     except TimeoutException:
         return False
-    except KeyboardInterrupt:        
-        return True 
     except EOFError:
         sys.exit(0)
     finally:
