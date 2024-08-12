@@ -86,6 +86,10 @@ class DoorLock:
             try:             
                 user_input = input()  # Wait for user input
                 if user_input == "":
+                    if len(seq) <= 1: 
+                        print("Please knock (press ctrl + c) at least twice...")
+                        seq = []
+                        continue
                     self.seq = parse_knock(seq)
                     print(f"Knock sequence recorded: {self.seq}")                    
                     return  # Exit the loop if Enter is pressed without any input
